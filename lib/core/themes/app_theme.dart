@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_web_app/core/themes/app_text_styles.dart';
 import 'app_colors.dart';
 
 class AppTheme {
   static const String _fontFamily = 'Outfit';
-  static const String _fontFamilyAlt = 'Outfit';
+  // ignore: unused_field
+  static const String _fontFamilyAlt = 'Fira_Code';
 
   static ThemeData get lightTheme {
     final baseTheme = ThemeData.light(useMaterial3: true);
@@ -11,31 +13,32 @@ class AppTheme {
     return baseTheme.copyWith(
       // Color scheme
       brightness: Brightness.light,
-      scaffoldBackgroundColor: AppColors.white,
-      primaryColor: AppColors.black,
+      scaffoldBackgroundColor: AppColors.bgDefault,
+      primaryColor: AppColors.textDefaultPrimary,
       appBarTheme: AppBarTheme(
-        backgroundColor: AppColors.white,
-        foregroundColor: AppColors.black,
+        backgroundColor: AppColors.bgTransparent,
+        foregroundColor: AppColors.textDefaultPrimary,
         elevation: 0,
         titleTextStyle: TextStyle(
           fontFamily: _fontFamily,
           fontSize: 20, // Use responsive scaler if needed
           fontWeight: FontWeight.bold,
-          color: AppColors.black,
+          color: AppColors.textDefaultPrimary,
         ),
       ),
-      iconTheme: IconThemeData(color: AppColors.black),
-      dividerColor: AppColors.grey,
+      
+      iconTheme: IconThemeData(color: AppColors.textDefaultPrimary),
+      dividerColor: AppColors.borderDefault,
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: AppColors.white,
+        fillColor: AppColors.bgTransparent,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: AppColors.grey),
+          borderSide: BorderSide(color: AppColors.borderDefault),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: AppColors.grey),
+          borderSide: BorderSide(color: AppColors.borderDefault),
         ),
       ),
     );
@@ -45,34 +48,45 @@ class AppTheme {
     final baseTheme = ThemeData.dark(useMaterial3: true);
 
     return baseTheme.copyWith(
+      
       // Color scheme
-      brightness: Brightness.dark,
-      scaffoldBackgroundColor: AppColors.black,
-      primaryColor: AppColors.white,
+      
+      brightness: Brightness.light,
+      scaffoldBackgroundColor: AppColors.bgDefault,
+      primaryColor: AppColors.textDefaultPrimary,
       appBarTheme: AppBarTheme(
-        backgroundColor: AppColors.black,
-        foregroundColor: AppColors.white,
+        backgroundColor: AppColors.bgTransparent,
+        foregroundColor: AppColors.textDefaultPrimary,
         elevation: 0,
         titleTextStyle: TextStyle(
           fontFamily: _fontFamily,
           fontSize: 20, // Use responsive scaler if needed
           fontWeight: FontWeight.bold,
-          color: AppColors.white,
+          color: AppColors.textDefaultPrimary,
         ),
       ),
-      iconTheme: IconThemeData(color: AppColors.white),
-      dividerColor: AppColors.darkGrey,
+      iconTheme: IconThemeData(color: AppColors.textDefaultPrimary),
+      dividerColor: AppColors.borderDefault,
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: AppColors.darkGrey,
+        fillColor: AppColors.bgTransparent,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: AppColors.grey),
+          borderSide: BorderSide(color: AppColors.borderDefault),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: AppColors.grey),
+          borderSide: BorderSide(color: AppColors.borderDefault),
         ),
+      ),
+
+      textTheme: TextTheme(
+        bodyMedium: AppTextStyles.regularMedium,
+        bodySmall: AppTextStyles.regularSmall,
+        bodyLarge: AppTextStyles.regularLarge,
+        titleLarge: AppTextStyles.altLarge,
+        titleMedium: AppTextStyles.altMedium,
+        titleSmall: AppTextStyles.altSmall,
       ),
     );
   }

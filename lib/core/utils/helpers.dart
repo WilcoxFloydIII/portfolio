@@ -1,45 +1,47 @@
-// import 'dart:async';
-// import 'package:flutter/widgets.dart';
-// import 'package:intl/intl.dart';
-// import 'dart:ui' as ui;
-// import 'package:flutter/services.dart';
-// import 'package:flutter_svg/flutter_svg.dart';
-// import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:responsive_framework/responsive_framework.dart';
+import 'package:flutter/widgets.dart';
 
-// class Debouncer {
-//   final int milliseconds;
-//   VoidCallback? action;
-//   Timer? _timer;
+double rs(
+  BuildContext context, {
+  required double mobile,
+  double? tablet,
+  double? desktop,
+}) {
+  final bp = ResponsiveBreakpoints.of(context);
 
-//   Debouncer({required this.milliseconds});
+  if (bp.isDesktop) return desktop ?? tablet ?? mobile;
+  if (bp.isTablet) return tablet ?? mobile;
+  return mobile;
+}
 
-//   void run(VoidCallback action) {
-//     _timer?.cancel();
-//     _timer = Timer(Duration(milliseconds: milliseconds), action);
-//   }
-// }
+class ResponsiveWidget extends StatelessWidget {
+  final Widget mobile;
+  final Widget? tablet;
+  final Widget? desktop;
 
-// String formatNumber(num number) {
-//   return NumberFormat().format(number);
-// }
+  const ResponsiveWidget({
+    super.key,
+    required this.mobile,
+    this.tablet,
+    this.desktop,
+  });
 
-// Future<BitmapDescriptor> bitmapDescriptorFromSvgAsset(
-//     BuildContext context, String assetName,
-//     {double width = 50, double height = 50}) async {
-//   // Load the SVG string from assets
-//   String svgString = await DefaultAssetBundle.of(context).loadString(assetName);
+  @override
+  Widget build(BuildContext context) {
+    final bp = ResponsiveBreakpoints.of(context);
 
-//   // Create a DrawableRoot from the SVG string
-//   final SvgStringLoader svgStringLoader = SvgStringLoader(svgString);
-//   final PictureInfo pictureInfo = await vg.loadPicture(svgStringLoader, null);
+    if (bp.isDesktop) {
+      // desktop → use desktop OR tablet OR mobile
+      return desktop ?? tablet ?? mobile;
+    }
 
-//   // Convert the Picture to a ui.Image
-//   ui.Image image =
-//       await pictureInfo.picture.toImage(width.toInt(), height.toInt());
+    if (bp.isTablet) {
+      // tablet → use tablet OR mobile
+      return tablet ?? mobile;
+    }
 
-//   // Get the byte data in PNG format
-//   ByteData? bytes = await image.toByteData(format: ui.ImageByteFormat.png);
+    // mobile → always use mobile
+    return mobile;
+  }
+}
 
-//   // Return BitmapDescriptor from the byte data
-//   return BitmapDescriptor.bytes(bytes!.buffer.asUint8List());
-// }
