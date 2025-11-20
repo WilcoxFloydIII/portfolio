@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_web_app/core/themes/app_colors.dart';
 import 'package:portfolio_web_app/core/themes/app_text_styles.dart';
 import 'package:portfolio_web_app/core/utils/helpers.dart';
-import 'package:portfolio_web_app/shared/widgets/app_button.dart';
+import 'package:portfolio_web_app/features/main/presentation/widgets/app_button_pair_1.dart';
 
 class TitleWidget extends StatefulWidget {
   const TitleWidget({super.key});
@@ -12,6 +12,10 @@ class TitleWidget extends StatefulWidget {
 }
 
 class _TitleWidgetState extends State<TitleWidget> {
+  String title1 = 'Front-end';
+  String title2 = 'Developer';
+  String text =
+      "My goal is to write maintainable, clean\nand understandable code to process\ndevelopment was enjoyable.";
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(
@@ -22,7 +26,7 @@ class _TitleWidgetState extends State<TitleWidget> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                'Full-stack',
+                title1,
                 style: AppTextStyles.altXLarge.copyWith(fontSize: 48),
               ),
             ],
@@ -31,7 +35,7 @@ class _TitleWidgetState extends State<TitleWidget> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
-                'Developer',
+                title2,
                 style: AppTextStyles.altXLarge.copyWith(fontSize: 48),
               ),
             ],
@@ -41,7 +45,7 @@ class _TitleWidgetState extends State<TitleWidget> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "My goal is to write maintainable, clean\nand understandable code to process\ndevelopment was enjoyable.",
+                text,
                 style: AppTextStyles.regularSmall.copyWith(
                   color: AppColors.textSecondary,
                 ),
@@ -49,34 +53,12 @@ class _TitleWidgetState extends State<TitleWidget> {
             ],
           ),
           SizedBox(height: 32),
-          Row(
-            spacing: 8,
-            children: [
-              AppButtonAlt(
-                onPressed: () {
-                  null;
-                },
-                circular: false,
-                border: false,
-                height: 56,
-                width: 184,
-                child: Text(
-                  'Projects',
-                  style: AppTextStyles.regularMediumItalic.copyWith(
-                    color: AppColors.textContrast,
-                  ),
-                ),
-              ),
-
-              AppButtonAlt(
-                onPressed: () {},
-                circular: true,
-                border: false,
-                height: 56,
-                width: 56,
-                child: Icon(Icons.arrow_forward, color: AppColors.textContrast),
-              ),
-            ],
+          AppButtonPair1(
+            onPressed: () {},
+            text: 'Projects',
+            height: 56,
+            width: 184,
+            fontSize: 16,
           ),
         ],
       ),
@@ -88,7 +70,7 @@ class _TitleWidgetState extends State<TitleWidget> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                'Full-stack',
+                title1,
                 style: AppTextStyles.altXLarge.copyWith(fontSize: 96),
               ),
             ],
@@ -97,7 +79,7 @@ class _TitleWidgetState extends State<TitleWidget> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
-                'Developer',
+                title2,
                 style: AppTextStyles.altXLarge.copyWith(fontSize: 96),
               ),
             ],
@@ -107,42 +89,17 @@ class _TitleWidgetState extends State<TitleWidget> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "My goal is to write maintainable, clean\nand understandable code to process\ndevelopment was enjoyable.",
+                text,
                 style: AppTextStyles.regularSmall.copyWith(
                   color: AppColors.textSecondary,
                 ),
               ),
-              Row(
-                spacing: 8,
-                children: [
-                  AppButtonAlt(
-                    onPressed: () {
-                      null;
-                    },
-                    circular: false,
-                    border: false,
-                    height: 56,
-                    width: 184,
-                    child: Text(
-                      'Projects',
-                      style: AppTextStyles.regularMediumItalic.copyWith(
-                        color: AppColors.textContrast,
-                      ),
-                    ),
-                  ),
-
-                  AppButtonAlt(
-                    onPressed: () {},
-                    circular: true,
-                    border: false,
-                    height: 56,
-                    width: 56,
-                    child: Icon(
-                      Icons.arrow_forward,
-                      color: AppColors.textContrast,
-                    ),
-                  ),
-                ],
+              AppButtonPair1(
+                onPressed: () {},
+                text: 'Projects',
+                height: 56,
+                width: 184,
+                fontSize: 16,
               ),
             ],
           ),
@@ -155,38 +112,13 @@ class _TitleWidgetState extends State<TitleWidget> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Full-stack', style: AppTextStyles.altXLarge),
-              Row(
-                spacing: 8,
-                children: [
-                  AppButtonAlt(
-                    onPressed: () {
-                      null;
-                    },
-                    circular: false,
-                    border: false,
-                    height: 56,
-                    width: 184,
-                    child: Text(
-                      'Projects',
-                      style: AppTextStyles.regularMediumItalic.copyWith(
-                        color: AppColors.textContrast,
-                      ),
-                    ),
-                  ),
-
-                  AppButtonAlt(
-                    onPressed: () {},
-                    circular: true,
-                    border: false,
-                    height: 56,
-                    width: 56,
-                    child: Icon(
-                      Icons.arrow_forward,
-                      color: AppColors.textContrast,
-                    ),
-                  ),
-                ],
+              Text(title1, style: AppTextStyles.altXLarge),
+              AppButtonPair1(
+                onPressed: () {},
+                text: 'Projects',
+                height: 56,
+                width: 184,
+                fontSize: 16,
               ),
             ],
           ),
@@ -194,12 +126,12 @@ class _TitleWidgetState extends State<TitleWidget> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "My goal is to write maintainable, clean\nand understandable code to process\ndevelopment was enjoyable.",
+                text,
                 style: AppTextStyles.regularSmall.copyWith(
                   color: AppColors.textSecondary,
                 ),
               ),
-              Text('Developer', style: AppTextStyles.altXLarge),
+              Text(title2, style: AppTextStyles.altXLarge),
             ],
           ),
         ],

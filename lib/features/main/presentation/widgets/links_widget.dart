@@ -14,7 +14,44 @@ class _LinksWidgetState extends State<LinksWidget> {
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(
-      mobile: Wrap(children: []),
+      mobile: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        spacing: 16,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            spacing: 16,
+            children: [
+              LinkButton(
+                onPressed: () {},
+                icon: PhosphorIcons.githubLogo(),
+                name: 'Github',
+              ),
+              LinkButton(
+                onPressed: () {},
+                icon: PhosphorIcons.linkedinLogo(),
+                name: 'Linkedin',
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            spacing: 16,
+            children: [
+              LinkButton(
+                onPressed: () {},
+                icon: PhosphorIcons.telegramLogo(),
+                name: 'Telegram',
+              ),
+              LinkButton(
+                onPressed: () {},
+                icon: PhosphorIcons.instagramLogo(),
+                name: 'Instagram',
+              ),
+            ],
+          ),
+        ],
+      ),
       tablet: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         spacing: 16,

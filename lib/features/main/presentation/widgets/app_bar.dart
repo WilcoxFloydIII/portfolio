@@ -15,6 +15,9 @@ class _AppNavBarState extends State<AppNavBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      elevation: 0,
+      shadowColor: Colors.transparent,
+      surfaceTintColor: Colors.transparent,
       title: Padding(
         padding: EdgeInsetsGeometry.symmetric(
           vertical: rs(context, mobile: 32),
@@ -25,7 +28,7 @@ class _AppNavBarState extends State<AppNavBar> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Wilcox Floyd',
+                'floyd.iii',
                 style: AppTextStyles.altSmall.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
@@ -46,7 +49,7 @@ class _AppNavBarState extends State<AppNavBar> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Wilcox Floyd',
+                'floyd.iii',
                 style: AppTextStyles.altSmall.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
