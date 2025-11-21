@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_web_app/core/utils/helpers.dart';
+import 'package:portfolio_web_app/features/main/presentation/widgets/about_widget.dart';
 import 'package:portfolio_web_app/features/main/presentation/widgets/app_bar.dart';
 import 'package:portfolio_web_app/features/main/presentation/widgets/carousel_widget.dart';
 import 'package:portfolio_web_app/features/main/presentation/widgets/links_widget.dart';
@@ -32,6 +33,8 @@ class _MainScreenState extends State<MainScreen> {
             LinksWidget(),
             SizedBox(height: 32),
             CarouselWidget(),
+            SizedBox(height: 132),
+            AboutWidget(),
           ],
         ),
       ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_web_app/core/themes/app_colors.dart';
-import 'package:portfolio_web_app/core/utils/helpers.dart';
 import 'package:portfolio_web_app/features/main/models/article_model.dart';
 import 'package:portfolio_web_app/features/main/presentation/widgets/app_button_pair_1.dart';
 
@@ -27,12 +26,8 @@ class _ArticleWidgetState extends State<ArticleWidget> {
     bool isLeftSide = !isActive && widget.index < widget.currentIndex;
     // Slide direction logic
     final double slideOffset = isActive ? 0 : (isLeftSide ? 0 : 200);
-    return ResponsiveWidget(
-      mobile: Container(),
-      tablet: Container(),
-      desktop: Container(
+    return Container(
         height: 276,
-        width: 630,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(32),
           border: Border.all(
@@ -51,8 +46,7 @@ class _ArticleWidgetState extends State<ArticleWidget> {
             ),
           ],
         ),
-      ),
-    );
+      );
   }
 }
 

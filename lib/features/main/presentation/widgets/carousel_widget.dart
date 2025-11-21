@@ -15,7 +15,6 @@ class CarouselWidget extends StatefulWidget {
 }
 
 class _CarouselWidgetState extends State<CarouselWidget> {
-  final PageController _controller = PageController(viewportFraction: 0.5);
   int _currentPage = 0;
   bool nextPressed = false;
   bool previousPressed = false;
@@ -29,14 +28,102 @@ class _CarouselWidgetState extends State<CarouselWidget> {
   ];
   @override
   Widget build(BuildContext context) {
+    final PageController _controller = PageController(
+      viewportFraction: rs(context, mobile: 1, tablet: 0.7, desktop: 0.5),
+    );
     return ResponsiveWidget(
-      mobile: Stack(alignment: AlignmentGeometry.center, children: [
-      
-    ],),
-      tablet: Stack(alignment: AlignmentGeometry.center, children: [
-      
-    ],),
-      desktop: Stack(
+      mobile: Column(
+        children: [
+          SizedBox(
+            height: 276,
+            child: PageView.builder(
+              controller: _controller,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: articles.length,
+              itemBuilder: (context, index) {
+                final bool active = index == _currentPage;
+
+                return AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  margin: const EdgeInsets.symmetric(horizontal: 16),
+                  curve: Curves.easeOut,
+                  child: AnimatedOpacity(
+                    duration: Duration(milliseconds: 300),
+                    opacity: active ? 1 : 0.8,
+                    child: ArticleWidget(
+                      article: articles[index],
+                      index: index,
+                      currentIndex: _currentPage,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+
+          SizedBox(height: 32),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              AppButtonAlt(
+                onPressed: (isHovered) {
+                  setState(() {
+                    previousPressed = isHovered;
+                  });
+                  if (_currentPage > 0) {
+                    _currentPage--;
+                    _controller.previousPage(
+                      duration: Duration(microseconds: 350),
+                      curve: Curves.easeOut,
+                    );
+                    setState(() {});
+                  }
+                },
+                onHovered: (isHovered) {},
+                border: true,
+                height: 56,
+                width: 56,
+                child: Icon(
+                  Icons.arrow_back,
+                  size: 24,
+                  color: previousPressed
+                      ? AppColors.bgDefault
+                      : AppColors.bgContrast,
+                ),
+              ),
+              AppButtonAlt(
+                onPressed: (isHovered) {
+                  setState(() {
+                    nextPressed = isHovered;
+                  });
+                  if (_currentPage < articles.length - 1) {
+                    _currentPage++;
+                    _controller.nextPage(
+                      duration: Duration(microseconds: 350),
+                      curve: Curves.easeIn,
+                    );
+                    setState(() {});
+                  }
+                },
+                onHovered: (isHovered) {},
+                border: true,
+                height: 56,
+                width: 56,
+                child: Icon(
+                  Icons.arrow_forward,
+                  size: 24,
+                  color: nextPressed
+                      ? AppColors.bgDefault
+                      : AppColors.bgContrast,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+      tablet: Stack(
         alignment: AlignmentGeometry.center,
         children: [
           SizedBox(
@@ -105,7 +192,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                     _currentPage++;
                     _controller.nextPage(
                       duration: Duration(microseconds: 350),
-                      curve: Curves.easeInOut,
+                      curve: Curves.easeIn,
                     );
                     setState(() {});
                   }
