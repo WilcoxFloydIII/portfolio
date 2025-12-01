@@ -45,3 +45,17 @@ class ResponsiveWidget extends StatelessWidget {
   }
 }
 
+String formatDuration(DateTime start, DateTime end) {
+  int totalMonths = (end.year - start.year) * 12 + (end.month - start.month);
+  int years = totalMonths ~/ 12;
+  int months = totalMonths % 12;
+
+  if (years > 0 && months > 0) {
+    return "$years year${years > 1 ? 's' : ''} "
+        "$months month${months > 1 ? 's' : ''}";
+  } else if (years > 0) {
+    return "$years year${years > 1 ? 's' : ''}";
+  } else {
+    return "$months month${months > 1 ? 's' : ''}";
+  }
+}

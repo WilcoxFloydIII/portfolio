@@ -15,47 +15,54 @@ class SkillWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        padding: EdgeInsets.all(32),
-        height: 168,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(32),
-          color: main ? AppColors.bgContrast : AppColors.bgDefault,
-          border: Border.all(
-            width: 1,
-            color: main ? AppColors.bgDefault : AppColors.borderDefault,
-          ),
-        ),
-        child: Column(
-          spacing: 16,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: AppTextStyles.altMedium.copyWith(
-                color: main
-                    ? AppColors.textContrast
-                    : AppColors.textDefaultPrimary,
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Flexible(
+          fit: FlexFit.tight,
+          child: Container(
+            padding: EdgeInsets.all(32),
+            height: 168,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(32),
+              color: main ? AppColors.bgContrast : AppColors.bgDefault,
+              border: Border.all(
+                width: 1,
+                color: main ? AppColors.bgDefault : AppColors.borderDefault,
               ),
             ),
-            Wrap(
-              children: List.generate(skills.length, (index) {
-                return Text(
-                  index != skills.length - 1
-                      ? '${skills[index]} / '
-                      : skills[index],
-                  style: AppTextStyles.regularSmall.copyWith(
+            child: Column(
+              spacing: 16,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: AppTextStyles.altSmall.copyWith(
                     color: main
                         ? AppColors.textContrast
                         : AppColors.textDefaultPrimary,
                   ),
-                );
-              }),
+                ),
+                Wrap(
+                  children: List.generate(skills.length, (index) {
+                    return Text(
+                      index != skills.length - 1
+                          ? '${skills[index]} / '
+                          : skills[index],
+                      style: AppTextStyles.regularSmall.copyWith(
+                        color: main
+                            ? AppColors.textContrast
+                            : AppColors.textDefaultPrimary,
+                      ),
+                    );
+                  }),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }

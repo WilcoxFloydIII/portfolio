@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_web_app/core/providers/user_provider.dart';
 import 'package:portfolio_web_app/core/themes/app_text_styles.dart';
 import 'package:portfolio_web_app/core/utils/helpers.dart';
 import 'package:portfolio_web_app/features/main/presentation/widgets/app_text_button.dart';
@@ -28,7 +29,7 @@ class _AppNavBarState extends State<AppNavBar> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'floyd.iii',
+                Floyd.userName,
                 style: AppTextStyles.altSmall.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
@@ -49,7 +50,7 @@ class _AppNavBarState extends State<AppNavBar> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'floyd.iii',
+                Floyd.userName,
                 style: AppTextStyles.altSmall.copyWith(
                   fontWeight: FontWeight.w600,
                 ),

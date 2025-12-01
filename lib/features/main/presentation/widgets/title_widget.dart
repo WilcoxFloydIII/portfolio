@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_web_app/core/providers/user_provider.dart';
 import 'package:portfolio_web_app/core/themes/app_colors.dart';
 import 'package:portfolio_web_app/core/themes/app_text_styles.dart';
 import 'package:portfolio_web_app/core/utils/helpers.dart';
@@ -14,8 +15,7 @@ class TitleWidget extends StatefulWidget {
 class _TitleWidgetState extends State<TitleWidget> {
   String title1 = 'Front-end';
   String title2 = 'Developer';
-  String text =
-      "My goal is to write maintainable, clean\nand understandable code to process\ndevelopment was enjoyable.";
+  String text = Floyd.positionDescription;
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(

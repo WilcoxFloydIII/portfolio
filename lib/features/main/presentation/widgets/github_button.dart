@@ -15,62 +15,65 @@ class _GithubButtonState extends State<GithubButton> {
   bool hovered = false;
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        AppButtonAlt(
-          onPressed: (onPressed) {
-            setState(() => pressed = onPressed);
-          },
-          onHovered: (onHovered) {
-            setState(() => hovered = onHovered);
-          },
-          border: true,
-          backColor: pressed
-              ? AppColors.bgContrast
-              : hovered
-              ? AppColors.bgContrastHover
-              : AppColors.bgDefault,
-          height: 56,
-          width: 56,
-          child: Icon(
-            PhosphorIcons.githubLogo(),
-            size: 24,
-            color: pressed
-                ? AppColors.bgDefault
-                : hovered
-                ? AppColors.bgContrastHover
-                : AppColors.bgContrast,
-          ),
-        ),
-        Positioned(
-          left: 32,
-          child: AppButtonAlt(
+    return Container(
+      width: 88,
+      child: Stack(
+        children: [
+          AppButtonAlt(
             onPressed: (onPressed) {
               setState(() => pressed = onPressed);
             },
             onHovered: (onHovered) {
               setState(() => hovered = onHovered);
             },
-            border: false,
+            border: true,
             backColor: pressed
-                ? AppColors.bgDefault
+                ? AppColors.bgContrast
                 : hovered
-                ? AppColors.bgContrastHover
-                : AppColors.bgContrast,
+                ? AppColors.borderDefault
+                : AppColors.bgDefault,
             height: 56,
             width: 56,
             child: Icon(
-              PhosphorIcons.arrowElbowRightUp(),
+              PhosphorIcons.githubLogo(),
               size: 24,
               color: pressed
-                  ? AppColors.bgContrast
+                  ? AppColors.bgDefault
                   : hovered
-                  ? AppColors.bgContrastHover
-                  : AppColors.bgDefault,
+                  ? AppColors.bgContrast
+                  : AppColors.bgContrast,
             ),
           ),
-        ),
-      ],
+          Positioned(
+            left: 32,
+            child: AppButtonAlt(
+              onPressed: (onPressed) {
+                setState(() => pressed = onPressed);
+              },
+              onHovered: (onHovered) {
+                setState(() => hovered = onHovered);
+              },
+              border: false,
+              backColor: pressed
+                  ? AppColors.bgDefault
+                  : hovered
+                  ? AppColors.bgContrastHover
+                  : AppColors.bgContrast,
+              height: 56,
+              width: 56,
+              child: Icon(
+                PhosphorIcons.arrowUpRight(),
+                size: 24,
+                color: pressed
+                    ? AppColors.bgContrast
+                    : hovered
+                    ? AppColors.bgDefault
+                    : AppColors.bgDefault,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
